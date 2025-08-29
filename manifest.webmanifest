@@ -1,0 +1,8 @@
+{
+  "name": "Mokoro Water Voucher",
+  "short_name": "Mokoro",
+  "start_url": "/duela/#/home",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0087a8"
+}

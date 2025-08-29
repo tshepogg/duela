@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Mokoro Water Voucher — MVP</title>
+  <link rel="manifest" href="manifest.webmanifest"/>
+  <meta name="theme-color" content="#0087a8"/>
+  <link rel="stylesheet" href="styles/styles.css"/>
+</head>
+<body>
+  <header class="appbar">
+    <button id="menuBtn" aria-label="Menu">☰</button>
+    <img src="assets/logo.svg" alt="Mokoro" class="logo"/>
+    <nav id="drawer" class="drawer" hidden>
+      <a href="#/home">Home</a>
+      <a href="#/buy">Buy</a>
+      <a href="#/history">History</a>
+      <a id="adminLink" href="#/admin" hidden>Admin</a>
+      <button id="logoutBtn">Log out</button>
+    </nav>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="bottomnav">
+    <a href="#/home">🏠 Home</a>
+    <a href="#/buy">💧 Buy</a>
+    <a href="#/history">📜 History</a>
+  </footer>
+
+  <script type="module">
+    import './app/router.js';
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js');
+    }
+    document.getElementById('menuBtn').onclick = () => {
+      const d = document.getElementById('drawer'); d.hidden = !d.hidden;
+    };
+  </script>
+</body>
+</html>
