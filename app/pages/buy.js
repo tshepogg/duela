@@ -1,4 +1,6 @@
-import { saveTxn } from '../db.js'; import { toast } from '../ui.js';
+import { saveTxn } from '../db.js';
+import { toast } from '../ui.js';
+import { auth } from '../auth.js';
 function genToken(){ return Array.from({length:20},()=>Math.floor(Math.random()*10)).join(''); }
 export function render(){return `
   <div class="card">
@@ -22,14 +24,18 @@ export function init(){
       const q = JSON.parse(localStorage.getItem('queued')||'[]'); q.push(payload); localStorage.setItem('queued',JSON.stringify(q));
       toast('Queued — will sync when online'); location.hash='#/history'; return;
     }
-    const uid = (await import('../auth.js')).auth.currentUser.uid;
+    const uid = auth.currentUser?.uid;
+    if (!uid) return toast('Not signed in');
     const id = await saveTxn(uid, { ...payload, userId: uid });
     location.hash = `#/receipt/${id}`;
   };
   window.addEventListener('online', async ()=>{
-    const q = JSON.parse(localStorage.getItem('queued')||'[]'); if(!q.length) return;
-    const { auth } = await import('../auth.js'); const uid = auth.currentUser?.uid; if(!uid) return;
+    const q = JSON.parse(localStorage.getItem('queued')||'[]');
+    if(!q.length) return;
+    const uid = auth.currentUser?.uid;
+    if(!uid) return;
     for(const p of q){ await saveTxn(uid, { ...p, userId: uid }); }
-    localStorage.removeItem('queued'); toast('Queued purchases synced');
+    localStorage.removeItem('queued');
+    toast('Queued purchases synced');
   }, { once:true });
 }
