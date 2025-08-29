@@ -1,0 +1,12 @@
+:root{--aqua:#0087a8;--ink:#222;--muted:#f5f7f9}
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui;color:var(--ink);background:#fff}
+.appbar{display:flex;gap:8px;align-items:center;padding:8px 12px;border-bottom:1px solid #eee}
+.logo{height:28px}.drawer{position:absolute;top:52px;left:8px;background:#fff;border:1px solid #ddd;border-radius:8px;display:flex;flex-direction:column;padding:8px}
+.bottomnav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #eee;background:#fff}
+main#app{padding:16px 16px 72px}
+.card{background:#fff;border:1px solid #eee;border-radius:12px;padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.btn{background:var(--aqua);color:#fff;border:none;padding:12px 16px;border-radius:8px;cursor:pointer}
+.input{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px}
+.list{display:grid;gap:8px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid #eee;border-radius:8px;background:var(--muted)}
+.toast{position:fixed;right:12px;top:12px;background:#333;color:#fff;padding:8px 12px;border-radius:6px;opacity:.95}
