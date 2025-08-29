@@ -11,14 +11,13 @@ const routes = {
   '#/history': History, '#/admin': Admin
 };
 function parseRoute(){
-  const h = location.hash || '#/login';
+  const h = location.hash || '#/home';
   if(h.startsWith('#/receipt/')) return ['#/receipt', h.split('/').pop()];
   return [h, null];
 }
 async function render(user){
   const [key, param] = parseRoute();
-  const page = key === '#/receipt' ? Receipt : routes[key] || Login;
-  if(!user && key!=='#/login') return location.hash = '#/login';
+  const page = key === '#/receipt' ? Receipt : routes[key] || Home;
   document.getElementById('logoutBtn').onclick = logout;
   if(user) toggleAdminLink(user.uid);
   const el = document.getElementById('app');
