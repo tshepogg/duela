@@ -1,5 +1,4 @@
 import { watchAuth, logout, toggleAdminLink } from './auth.js';
-import * as Login from './pages/login.js';
 import * as Home from './pages/home.js';
 import * as Buy from './pages/buy.js';
 import * as Receipt from './pages/receipt.js';
@@ -7,7 +6,7 @@ import * as History from './pages/history.js';
 import * as Admin from './pages/admin.js';
 
 const routes = {
-  '#/login': Login, '#/home': Home, '#/buy': Buy,
+  '#/home': Home, '#/buy': Buy,
   '#/history': History, '#/admin': Admin
 };
 function parseRoute(){

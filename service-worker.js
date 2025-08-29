@@ -2,7 +2,7 @@ const CACHE = 'mokoro-v1';
 const ASSETS = [
   './','./index.html','./404.html','./styles/styles.css',
   './app/router.js','./app/ui.js','./app/auth.js','./app/db.js',
-  './app/pages/login.js','./app/pages/home.js','./app/pages/buy.js',
+  './app/pages/home.js','./app/pages/buy.js',
   './app/pages/receipt.js','./app/pages/history.js','./app/pages/admin.js',
   './assets/logo.svg'
 ];

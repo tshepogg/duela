@@ -1,20 +1,13 @@
-import { firebaseConfig } from '../firebaseConfig.js';
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword,
-         createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from
-         "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { isAdmin } from './db.js';
+export const auth = { currentUser: { uid: 'tshepo', email: 'Tshepo' } };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+export const watchAuth = (cb) => cb(auth.currentUser);
+export const login = async () => auth.currentUser;
+export const signup = async () => auth.currentUser;
+export const resetPw = async () => {};
+export const logout = async () => {};
 
-export const watchAuth = (cb) => onAuthStateChanged(auth, cb);
-export const login = (e,p) => signInWithEmailAndPassword(auth,e,p);
-export const signup = (e,p) => createUserWithEmailAndPassword(auth,e,p);
-export const resetPw = (e) => sendPasswordResetEmail(auth,e);
-export const logout = () => signOut(auth);
-
-export async function toggleAdminLink(uid){
+export function toggleAdminLink() {
   const link = document.getElementById('adminLink');
-  link.hidden = !(await isAdmin(uid));
+  if (link) link.hidden = true;
 }
+
